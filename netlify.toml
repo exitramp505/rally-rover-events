@@ -1,4 +1,5 @@
-# Deploy generated HTML and images already committed to the repo root.
-# There is intentionally no build command.
+# Publish only the finished site, not internal repository notes and scripts.
+# The HTML and JPG files are generated and committed before deploy.
 [build]
-  publish = "."
+  command = "mkdir -p dist && cp ./*.html dist/ && cp -R img dist/img"
+  publish = "dist"
