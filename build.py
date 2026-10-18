@@ -27,22 +27,17 @@ footer{max-width:860px;margin:30px auto;padding:20px;border-top:1px solid #ddd;f
 def shell(title,body,a='#b3202a',bg='#10264a',desc=''):
     return f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><style>:root{{--a:{a};--bg:{bg}}}{CSS}</style></head><body><header class="top"><a href="index.html">Rally Rover · Parade Guides</a></header><main>{body}</main>{JS}<footer>{DISC} · <a href="privacy.html">Privacy</a></footer></body></html>'
 
-def rsvp(evname=None):
-    if evname:
-        ev_field=f'<input type="hidden" name="event" value="{html.escape(evname)}">'
-    else:
-        opts=''.join(f'<option>{html.escape(e["name"])}</option>' for e in ev)+'<option>All three events</option>'
-        ev_field=f'<label for="rsvp-event">Which event?</label><select id="rsvp-event" name="event">{opts}</select>'
-    return f'''<section class="rsvp" id="rsvp"><h2>Get updates (interest-only RSVP)</h2>
-<p class="note">This is <strong>not a ticket</strong> and not a registration for the event. The parade is free and run by its official organizers. Leave your email if you want updates about this event and our merch.</p>
+def rsvp(evname):
+    en=html.escape(evname)
+    return f'''<section class="rsvp" id="rsvp"><h2>Get updates for {en}</h2>
 <form class="rsvp-form" action="{FORM_URL}" method="POST" novalidate>
 <label for="rsvp-email">Email</label><input id="rsvp-email" type="email" name="email" required autocomplete="email">
 <label for="rsvp-name">First name (optional)</label><input id="rsvp-name" type="text" name="first_name" autocomplete="given-name">
-{ev_field}
-<input type="hidden" name="_subject" value="Rally Rover RSVP signup"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table">
+<input type="hidden" name="event" value="{en}">
+<input type="hidden" name="_subject" value="Rally Rover RSVP signup: {en}"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table">
 <div class="hp" aria-hidden="true"><label>Leave this empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
 <label class="consent"><input type="checkbox" name="consent" value="yes" required><span>{CONSENT} <a href="privacy.html">Privacy</a></span></label>
-<button type="submit">RSVP for updates</button><p class="msg" role="status" aria-live="polite"></p></form>
+<button type="submit">RSVP for updates</button><p class="note">Interest-only RSVP, not a ticket.</p><p class="msg" role="status" aria-live="polite"></p></form>
 <div class="thanks" hidden><p class="msg">Thanks! You're on the list. We'll email you about this event and merch. You can unsubscribe anytime.</p></div></section>'''
 JS="""<script>document.querySelectorAll('.rsvp-form').forEach(function(f){f.addEventListener('submit',function(ev){ev.preventDefault();var m=f.querySelector('.msg');m.className='msg';
 if(f.querySelector('[name=_honey]').value){f.parentNode.querySelector('.thanks').hidden=false;f.hidden=true;return}
@@ -77,10 +72,10 @@ for e in ev:
 {rsvp(e['name'])}'''
     open(f"{e['slug']}.html",'w').write(shell(e['name']+' 2026 | Rally Rover',body,e['acc'],e['bg'],f"{e['name']}, {e['when']}. Event info and holiday merch."))
     cards+=f'<a class="card" href="{e["slug"]}.html"><img src="img/{e["slug"]}-flyer.jpg" alt=""><div><strong>{e["name"]}</strong><br>{e["short"]} · Dec 5, 2026</div></a>'
-home=f'<h1>Holiday Parade Guides, December 5, 2026</h1><p>Where to be, when to arrive, and cozy merch to wear while you watch. Pick your parade.</p><div class="cards">{cards}</div>{rsvp()}'
+home=f'<h1>Holiday Parade Guides, December 5, 2026</h1><p>Where to be, when to arrive, and cozy merch to wear while you watch. Pick your parade.</p><div class="cards">{cards}</div>'
 priv=f'''<h1>Privacy</h1><p>Last updated October 18, 2026.</p>
-<h2>Who we are</h2><p>Rally Rover is an independent fan guide and merchandise project for community holiday parades. We are not affiliated with or endorsed by the event organizers.</p>
-<h2>What the RSVP form collects</h2><p>Your email address, an optional first name, which event you are interested in, and your consent. The RSVP is interest-only: it is not a ticket and does not register you for any event.</p>
+<h2>Who we are</h2><p>Rally Rover publishes holiday parade guides and merchandise.</p>
+<h2>What the RSVP form collects</h2><p>Your email address, an optional first name, which event you are interested in, and your consent. </p>
 <h2>How we use it</h2><p>Only to email you updates about the event you chose and about our merchandise, as you agreed when you ticked the consent box ("{CONSENT}"). We do not sell or share your email.</p>
 <h2>Where it is processed</h2><p>Form submissions are relayed by the form service FormSubmit (formsubmit.co) to our project inbox. This site has no analytics or tracking cookies. Links to the Printful stores and official event sites are governed by those sites' own policies.</p>
 <h2>Unsubscribe or delete</h2><p>Every email will tell you how to unsubscribe. You can also email rallyrover@mail.grokbot.com at any time to ask us to remove or delete your information, and we will do so.</p>

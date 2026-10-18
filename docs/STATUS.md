@@ -1,6 +1,7 @@
 # Status (2026-10-18)
 
 ## Live
+- 2026-10-18: home page has NO signup form (event cards only); each event page has its own exclusive signup (hidden event field); one footer disclaimer per page. See DECISIONS #11.
 - Site on GitHub Pages: https://exitramp505.github.io/rally-rover-events/ (home, georgetown, flower-mound, richmond, privacy).
 - Printful stores live with approved prices (see README).
 - Eventbrite: account locked, listings unpublished. Do not retry.
@@ -14,7 +15,7 @@
 - Eventbrite locked: no action unless he wants to appeal.
 
 ## RSVP form: how to view / export
-- Signups arrive as emails (subject "Rally Rover RSVP signup") in `rallyrover@mail.grokbot.com`. A bot can search them (SearchEmailThreads) and compile a CSV of email, first_name, event, consent.
+- Signups arrive as emails (subject "Rally Rover RSVP signup: <event name>") in `rallyrover@mail.grokbot.com`. A bot can search them (SearchEmailThreads) and compile a CSV of email, first_name, event, consent.
 - Keep any exported list out of git.
 - To delete a person: delete their email(s) from the inbox/export; they can also request deletion by emailing the inbox.
 - To delete the test entry (email test-signup@example.com, event "TEST ENTRY"), delete that email from the inbox and ignore it in exports.
