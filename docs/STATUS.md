@@ -3,7 +3,7 @@
 ## Current site
 - Existing GitHub Pages production site: https://exitramp505.github.io/rally-rover-events/
 - **Netlify project CREATED but first deploy NOT YET VERIFIED**: https://app.netlify.com/projects/rally-rover-events; reserved hostname `rally-rover-events.netlify.app`.
-- To finish: connect `exitramp505/rally-rover-events` on branch `main` to Netlify Git continuous deployment, with publish directory `.` (see `netlify.toml`). Confirm the deploy state is `ready` before treating the reserved URL as live.
+- To finish: connect `exitramp505/rally-rover-events` on branch `main` to Netlify Git continuous deployment, using the build settings in `netlify.toml` (copy static HTML and images to `dist/`; publish directory `dist`). Confirm the deploy state is `ready` before treating the reserved URL as live.
 - After the first deploy, verify home, Georgetown, Flower Mound, Richmond and privacy routes, Printful links, and interest forms; re-activate FormSubmit if its origin verification requires it.
 - Home has event cards only. Each event page has its own event-specific interest form and one footer disclaimer.
 - Printful stores are published at the prices in README.
@@ -18,7 +18,7 @@
 - Decide whether to use Luma/Facebook distribution, subject to the respective terms and actual organizer status. No AI organizer outreach.
 - Printful Quick Stores cannot natively provide approved bundles; keep inactive unless a compliant alternative is selected.
 - Netlify Git connection, deploy verification, and FormSubmit new-origin verification are pending.
-- An asynchronous GitHub Issues handoff is being established (see `docs/AGENT_COORDINATION.md`). Acknowledgement by Grok Bot is not yet confirmed.
+- GitHub Issues handoff created at https://github.com/exitramp505/rally-rover-events/issues/1 (see `docs/AGENT_COORDINATION.md`). Grok Bot has not yet acknowledged.
 
 ## Interest form data
 - Signups arrive as emails with a subject identifying the event at the Rally Rover project inbox. The signup means event/merch updates only, **not** official event registration.
