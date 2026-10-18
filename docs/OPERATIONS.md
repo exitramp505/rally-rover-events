@@ -1,17 +1,30 @@
 # Operations
 
 ## Roles
-- **Lysander** (owner): approves prices, money/tax/bank items, new channels. Has said: fix wrong live info first and tell him after; cancellation/postponement takedowns also immediate.
-- **Coordinator bot ("Grok Bot")**: owns event master record, briefs, QC checkpoint, QC_LOG, store prices, publishing, reports to Lysander. Each brief must include facts, current prices, vibe note and (if city-tied) city note, and is sent with priority true.
-- **Event Scriptwriter**: promo post, short caption, 30-second script per event. Files in `docs/copy/*_FINAL.md`. Ends with the disclaimer.
-- **Event Designer**: flyers, social graphics, merch art and mockups (outputs live in `/workspace/design-trial/` on the box; flyers have the disclaimer as last line).
-- **Merch Ops**: Printful Quick Stores, prices, size upcharges, bundles, payouts (W-9 / bank blocked, see STATUS).
+- **Owner**: approves prices, money/tax/bank items, and new channels. Owns all contact and relationships with event organizers personally.
+- **Coordinator bot (Grok Bot)**: researches and verifies public event information; maintains event records and briefs; manages QC, merchandise information, publishing, and operational reports. It does **not** contact organizers or manage organizer outreach.
+- **Event Scriptwriter**: writes public event-guide and merchandise copy, captions, and short scripts from verified sources.
+- **Event Designer**: creates original flyers, social graphics, merch art, and mockups.
+- **Merch Ops**: manages Printful Quick Stores, prices, size adjustments, approved merchandise, and order-related operational checks. Owner handles sensitive payout/tax setup.
+- **ChatGPT**: may review documentation, code, site behavior, and GitHub handoffs when invoked. No continuous monitoring is implied.
+
+## Organizer relationships — expressly outside AI scope
+The owner alone handles organizer contact and relationships. Do not initiate, draft, send, schedule, track, or remind anyone about organizer outreach, organizer replies, or organizer follow-ups. Do not create tasks, CRM records, or alerts for this purpose.
+
+Bots may independently verify **public** event details, link to the event's official page, and correct inaccurate public guide information. Rally Rover's interest signup is not an official ticket or an organizer registration.
 
 ## Change-notice process
-When any fact or price changes: update the master record, send a change notice (what changed, old and new values) to Scriptwriter and Designer, they re-issue corrected pieces immediately, coordinator replaces anything already published or sent, logs it, informs Lysander afterwards. Rebuild this site (`python3 build.py`) and push.
+When a verified public event fact or merchandise price changes: update the event record, notify the Scriptwriter and Designer of the old and new public facts, replace affected published materials, log the correction, and report the change to the owner. Cancellations and postponements should be reflected promptly. No organizer contact or outreach tracking is part of this process.
 
 ## QC process
-Checklist is in `DECISIONS.md` item 7. Log each event: what was published, what failed review, what was fixed; flag repeated problems from one bot. Current log: `QC_LOG.md` (so far: Scriptwriter passed first try on all three; flyers failed once for missing disclaimer, passed round 2).
+Use the checklist in `docs/DECISIONS.md` item 7. Log quality checks in `docs/QC_LOG.md`. Verify factual accuracy, prices, original licensed art, and the independent-guide disclosure. Never place attendee details, customer personal information, secrets, or API keys in GitHub.
 
-## Site updates
-Edit copy in `docs/copy/`, run `python3 build.py`, commit, push. Pages redeploys in about a minute.
+## Site updates and hosting
+GitHub is the source of truth. Generated HTML and images are committed in the repository root.
+- Edit `docs/copy/` or `build.py`, run `python3 build.py` where Pillow is installed, inspect the generated files, and commit and push.
+- The intended production host is **Netlify** with publish directory `.` and no build command; Netlify can publish committed static files.
+- Netlify automatic publishing begins only after the repository is connected to the Netlify site. See `docs/STATUS.md` for the current deployment state.
+- Moving the public domain requires reactivating/testing the FormSubmit form on the new origin; verify with a test submission and do not assume it works.
+
+## AI-to-AI coordination
+See `docs/AGENT_COORDINATION.md`. Use GitHub Issues for work requests and responses, and repository documents for durable decisions. A GitHub issue is a shared mailbox, not a real-time connection: each agent must explicitly read/check the issue before it can respond.
