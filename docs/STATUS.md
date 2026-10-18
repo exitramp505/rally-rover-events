@@ -1,10 +1,9 @@
 # Status (2026-10-18)
 
 ## Current site
-- Existing GitHub Pages production site: https://exitramp505.github.io/rally-rover-events/
-- **Netlify project CREATED but first deploy NOT YET VERIFIED**: https://app.netlify.com/projects/rally-rover-events; reserved hostname `rally-rover-events.netlify.app`.
-- To finish: connect `exitramp505/rally-rover-events` on branch `main` to Netlify Git continuous deployment, using the build settings in `netlify.toml` (copy static HTML and images to `dist/`; publish directory `dist`). Confirm the deploy state is `ready` before treating the reserved URL as live.
-- After the first deploy, verify home, Georgetown, Flower Mound, Richmond and privacy routes, Printful links, and interest forms; re-activate FormSubmit if its origin verification requires it.
+- **Netlify production deploy READY (2026-10-18 7:41 PM ET)**: https://rally-rover-events.netlify.app/ (dashboard: https://app.netlify.com/projects/rally-rover-events). Netlify confirms deploy `6ad55915143f31df8690c44d`, GitHub branch `main`, commit `dae8ab000533d1895fdda080ae80dd34c668bdba`, no reported build errors, five HTML pages and fifteen assets published.
+- GitHub Pages remains available as the previous host: https://exitramp505.github.io/rally-rover-events/ . Netlify is the intended production host; GitHub remains source of truth.
+- **Still to test:** public homepage/event/privacy routes and images in a browser, official event links and Printful links, and interest form submission from the Netlify origin. The available HTTP checker could not retrieve the new host even though Netlify reports a ready published deploy. Reactivate FormSubmit if its new-origin verification requires it.
 - Home has event cards only. Each event page has its own event-specific interest form and one footer disclaimer.
 - Printful stores are published at the prices in README.
 - Eventbrite account was locked; events were unpublished. Do not retry to circumvent the lock.
@@ -17,7 +16,7 @@
 ## Other open operational items
 - Decide whether to use Luma/Facebook distribution, subject to the respective terms and actual organizer status. No AI organizer outreach.
 - Printful Quick Stores cannot natively provide approved bundles; keep inactive unless a compliant alternative is selected.
-- Netlify Git connection, deploy verification, and FormSubmit new-origin verification are pending.
+- Netlify Git connection and first deploy are complete. Public end-to-end tests and FormSubmit new-origin activation/testing remain pending.
 - GitHub Issues handoff created at https://github.com/exitramp505/rally-rover-events/issues/1 (see `docs/AGENT_COORDINATION.md`). Grok Bot has not yet acknowledged.
 
 ## Interest form data
