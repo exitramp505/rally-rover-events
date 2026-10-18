@@ -1,43 +1,54 @@
-# Rally Rover Events (static site)
+# Rally Rover Events
 
-Independent fan guides + merch for three community holiday parades on **Saturday, Dec 5, 2026**:
-Georgetown TX, Flower Mound TX, Richmond VA. Each page has event info, a link to the official event page,
-merch from a Printful Quick Store, and an interest-only RSVP form (email list for event/merch updates).
-We are **not affiliated with or endorsed by the organizers**; every page ends with that disclaimer.
+Independent community-event guides and original merchandise. The site currently includes three December 5, 2026 parade guides: Georgetown TX, Flower Mound TX, and Richmond VA.
 
-Live site: https://exitramp505.github.io/rally-rover-events/  
-Repo: https://github.com/exitramp505/rally-rover-events
+**Repository/source of truth:** https://github.com/exitramp505/rally-rover-events
 
-## Structure
-- `build.py` generates every `*.html` file (home, 3 event pages, `privacy.html`) from copy in `docs/copy/*_FINAL.md` and flyer/mockup images. Edit `build.py` or the copy, run `python3 build.py`, commit the output.
-- `img/` flyers and merch mockups actually used (JPG, resized by build.py from the designer's PNGs, which are not in the repo; the build skips image regeneration if the source folder is missing).
-- `docs/` notes for humans and future AIs: `DECISIONS.md`, `OPERATIONS.md`, `STATUS.md`, `QC_LOG.md`, `channels_research.md`, `vibe_city_notes.md`, `copy/` (QC-passed Scriptwriter copy).
-- All links are relative, so the folder can be hosted anywhere static (GitHub Pages now; Cloudflare Pages / Netlify / any host later).
+**Hosting transition (2026-10-18):**
+- Netlify project created: https://app.netlify.com/projects/rally-rover-events
+- Reserved production hostname: https://rally-rover-events.netlify.app/ — **not live until the first deploy is confirmed**.
+- Existing GitHub Pages site remains available during the transition: https://exitramp505.github.io/rally-rover-events/
+- Keep using the GitHub repository. When connected to Netlify for continuous deployment, pushes to `main` will publish the static files.
 
-## Build / deploy
+## Scope
+
+Grok Bot and supporting agents discover and verify public event information, write independent event-guide content, generate original merchandise/promotional art, manage site publishing and QC, and report operating results.
+
+**Organizer relationships belong to the owner alone.** Do not assign organizer outreach, correspondence, follow-up, tracking, or reminders to AI agents. The site links to official event pages, and each site's email interest form is **not** an organizer registration or a ticket.
+
+## Site structure
+
+- `build.py` generates root-level HTML files from the edited copy in `docs/copy/*_FINAL.md` and design outputs.
+- `img/` contains published image assets. Committed JPG files are retained when the original local design directory is absent.
+- `docs/OPERATIONS.md`, `docs/DECISIONS.md`, `docs/STATUS.md` and `docs/QC_LOG.md` document active process and decisions.
+- `docs/AGENT_COORDINATION.md` describes the **GitHub Issues handoff channel** for Grok Bot and ChatGPT.
+- Links are relative, so the generated root works on GitHub Pages or a root-hosted site.
+
+## Build and publish
+
+The generated HTML/JPG files are already committed. For Netlify, use the GitHub repository `exitramp505/rally-rover-events`, production branch `main`, no build command, and publish directory `.` (repository root). This is also specified in `netlify.toml`.
+
+When modifying event content:
+```bash
+pip install pillow
+python3 build.py
+git add -A
+git commit -m "Update event content"
+git push
 ```
-pip install pillow      # only needed if regenerating images
-python3 build.py        # env: FORM_ID (FormSubmit alias), DESIGN_DIR (source PNGs)
-git add -A && git commit -m "..." && git push   # Pages serves branch main, root
-```
-GitHub Pages: Settings > Pages > Deploy from branch `main` `/ (root)`. Nothing else is host-specific.
-To move hosts: publish the repo root on the new host, then re-activate the RSVP form (see `docs/STATUS.md`).
+If the original designer PNGs are not on the machine, the script keeps the existing committed JPGs. Review changes before pushing.
 
-## RSVP form
-Service: **FormSubmit** (formsubmit.co), free, no account. Each signup is emailed to the project inbox
-`rallyrover@mail.grokbot.com`. Hidden honeypot `_honey`, required consent checkbox, thank-you state shown in-page.
-The endpoint uses a random alias (in `build.py`), not the raw email. **Never commit collected emails** (`.gitignore` blocks csv/signups).
+**Netlify setup remaining:** Connect this existing repo in https://app.netlify.com/projects/rally-rover-events to continuous deployment, select `main`, and verify the first deploy succeeds. After deployment, test every event page, store link, privacy page, and RSVP form. FormSubmit may require activation for the new origin; check `docs/STATUS.md`.
 
-## Stores and prices (Printful Quick Stores)
-| Event | Store |
-|---|---|
-| Georgetown | https://rally-rover.printful.me |
-| Flower Mound | https://holidays-on-the-mound.printful.me |
-| Richmond | https://christmas-on-broad-street.printful.me |
+## Interest forms and privacy
 
-Tee from $27, Hoodie from $48, Mug $18, Ornament $16, Tote $25, Poster $26. Tees and hoodies +$2 per size step from 2XL
-(Georgetown store tops out at 3XL). Bundles (tee+mug $42, ornament+mug $30) approved but NOT set up (Quick Stores lack native bundles).
-Lead with hoodies and mugs in copy.
+FormSubmit sends consented interest-only submissions to the project inbox. The form stores the selected event, optional first name, email, and consent. These are not tickets, and are not registered with the event organizer. **Do not commit personal data, subscriber exports, or credentials.**
 
-## Official event pages
-Georgetown https://dgagtx.org/Parade · Flower Mound https://www.flowermound.gov/parade · Richmond https://www.richmondparade.org/
+## Merchandise
+
+Printful Quick Stores:
+- Georgetown: https://rally-rover.printful.me
+- Flower Mound: https://holidays-on-the-mound.printful.me
+- Richmond: https://christmas-on-broad-street.printful.me
+
+Approved prices: tees from $27, hoodies from $48, mugs $18, ornaments $16, totes $25, posters $26; $2 per size step from 2XL on tees and hoodies. Bundles have been discussed but are not yet active. Printful payout/tax setup remains owner-only.
