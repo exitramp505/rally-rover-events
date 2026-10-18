@@ -1,0 +1,4 @@
+# Deploy generated HTML and images already committed to the repo root.
+# There is intentionally no build command.
+[build]
+  publish = "."
