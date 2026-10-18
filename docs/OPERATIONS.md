@@ -22,7 +22,7 @@ Use the checklist in `docs/DECISIONS.md` item 7. Log quality checks in `docs/QC_
 ## Site updates and hosting
 GitHub is the source of truth. Generated HTML and images are committed in the repository root.
 - Edit `docs/copy/` or `build.py`, run `python3 build.py` where Pillow is installed, inspect the generated files, and commit and push.
-- The intended production host is **Netlify** with publish directory `.` and no build command; Netlify can publish committed static files.
+- The intended production host is **Netlify** with Netlify's `netlify.toml` build command that copies committed HTML and `img/` to a `dist/` publish directory (avoiding the publication of internal repository documents).
 - Netlify automatic publishing begins only after the repository is connected to the Netlify site. See `docs/STATUS.md` for the current deployment state.
 - Moving the public domain requires reactivating/testing the FormSubmit form on the new origin; verify with a test submission and do not assume it works.
 
