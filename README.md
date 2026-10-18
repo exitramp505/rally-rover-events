@@ -26,7 +26,7 @@ Grok Bot and supporting agents discover and verify public event information, wri
 
 ## Build and publish
 
-The generated HTML/JPG files are already committed. For Netlify, use the GitHub repository `exitramp505/rally-rover-events`, production branch `main`, no build command, and publish directory `.` (repository root). This is also specified in `netlify.toml`.
+The generated HTML/JPG files are already committed. For Netlify, use the GitHub repository `exitramp505/rally-rover-events`, production branch `main`, the committed static files copied into a `dist` folder by the build command specified in `netlify.toml`. The publish directory is `dist`; do not configure a Python build.
 
 When modifying event content:
 ```bash
@@ -38,7 +38,7 @@ git push
 ```
 If the original designer PNGs are not on the machine, the script keeps the existing committed JPGs. Review changes before pushing.
 
-**Netlify setup remaining:** Connect this existing repo in https://app.netlify.com/projects/rally-rover-events to continuous deployment, select `main`, and verify the first deploy succeeds. After deployment, test every event page, store link, privacy page, and RSVP form. FormSubmit may require activation for the new origin; check `docs/STATUS.md`.
+**Netlify setup remaining:** Connect this existing repo in https://app.netlify.com/projects/rally-rover-events to continuous deployment, select `main`, and verify the first deploy succeeds. The Netlify build copies committed HTML files and `img/` assets to `dist/` without rebuilding images. After deployment, test every event page, store link, privacy page, and RSVP form. FormSubmit may require activation for the new origin; check `docs/STATUS.md`.
 
 ## Interest forms and privacy
 
