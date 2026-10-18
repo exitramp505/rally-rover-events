@@ -4,11 +4,10 @@ Independent community-event guides and original merchandise. The site currently 
 
 **Repository/source of truth:** https://github.com/exitramp505/rally-rover-events
 
-**Hosting transition (2026-10-18):**
-- Netlify project created: https://app.netlify.com/projects/rally-rover-events
-- Reserved production hostname: https://rally-rover-events.netlify.app/ — **not live until the first deploy is confirmed**.
-- Existing GitHub Pages site remains available during the transition: https://exitramp505.github.io/rally-rover-events/
-- Keep using the GitHub repository. When connected to Netlify for continuous deployment, pushes to `main` will publish the static files.
+**Production hosting (2026-10-18):**
+- **Netlify published successfully:** https://rally-rover-events.netlify.app/ (dashboard: https://app.netlify.com/projects/rally-rover-events). Netlify reports production deploy `6ad55915143f31df8690c44d` in `ready` state, branch `main`, commit `dae8ab000533d1895fdda080ae80dd34c668bdba`.
+- The previous GitHub Pages site remains available: https://exitramp505.github.io/rally-rover-events/
+- GitHub is source of truth. Changes pushed to `main` trigger Netlify continuous deployment. Public browser and RSVP new-origin checks remain to be completed.
 
 ## Scope
 
@@ -38,7 +37,7 @@ git push
 ```
 If the original designer PNGs are not on the machine, the script keeps the existing committed JPGs. Review changes before pushing.
 
-**Netlify setup remaining:** Connect this existing repo in https://app.netlify.com/projects/rally-rover-events to continuous deployment, select `main`, and verify the first deploy succeeds. The Netlify build copies committed HTML files and `img/` assets to `dist/` without rebuilding images. After deployment, test every event page, store link, privacy page, and RSVP form. FormSubmit may require activation for the new origin; check `docs/STATUS.md`.
+**Netlify status:** Connected to the GitHub repo; first production deploy successfully published on 2026-10-18. The Netlify build copies committed HTML files and `img/` assets to `dist/` without rebuilding images. **Still verify** every public event page, store link, privacy page, and RSVP form in a browser. FormSubmit may require activation for the new origin; check `docs/STATUS.md`.
 
 ## Interest forms and privacy
 
