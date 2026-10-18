@@ -1,23 +1,27 @@
 # Status (2026-10-18)
 
-## Live
-- 2026-10-18: home page has NO signup form (event cards only); each event page has its own exclusive signup (hidden event field); one footer disclaimer per page. See DECISIONS #11.
-- Site on GitHub Pages: https://exitramp505.github.io/rally-rover-events/ (home, georgetown, flower-mound, richmond, privacy).
-- Printful stores live with approved prices (see README).
-- Eventbrite: account locked, listings unpublished. Do not retry.
+## Current site
+- Existing GitHub Pages production site: https://exitramp505.github.io/rally-rover-events/
+- **Netlify project CREATED but first deploy NOT YET VERIFIED**: https://app.netlify.com/projects/rally-rover-events; reserved hostname `rally-rover-events.netlify.app`.
+- To finish: connect `exitramp505/rally-rover-events` on branch `main` to Netlify Git continuous deployment, with publish directory `.` (see `netlify.toml`). Confirm the deploy state is `ready` before treating the reserved URL as live.
+- After the first deploy, verify home, Georgetown, Flower Mound, Richmond and privacy routes, Printful links, and interest forms; re-activate FormSubmit if its origin verification requires it.
+- Home has event cards only. Each event page has its own event-specific interest form and one footer disclaimer.
+- Printful stores are published at the prices in README.
+- Eventbrite account was locked; events were unpublished. Do not retry to circumvent the lock.
 
-## Open items (need Lysander)
-- **Printful W-9 declined**: needs a hand-signed form or time-stamped e-signature. Only Lysander can do it (signature/tax details).
-- **Payout bank account not set** in Printful; payout minimum $25/month via Stripe.
-- Decide on Luma (suggested: one Georgetown test event, stop at first warning) and Facebook (needs his login; local groups require admin approval for selling). See `channels_research.md`.
-- Bundles not available in Quick Stores; decide whether to drop or use another approach.
-- Final decision on long-term hosting (Pages is fine for now).
-- Eventbrite locked: no action unless he wants to appeal.
+## Owner-only boundaries
+- All organizer contact and relationships, replies, follow-ups and reminders are solely the owner's responsibility. AI must not manage these.
+- Printful W-9 was declined and needs the owner's hand-signed form or suitable time-stamped e-signature.
+- Printful payout bank account not set; this requires owner involvement.
 
-## RSVP form: how to view / export
-- Signups arrive as emails (subject "Rally Rover RSVP signup: <event name>") in `rallyrover@mail.grokbot.com`. A bot can search them (SearchEmailThreads) and compile a CSV of email, first_name, event, consent.
-- Keep any exported list out of git.
-- To delete a person: delete their email(s) from the inbox/export; they can also request deletion by emailing the inbox.
-- To delete the test entry (email test-signup@example.com, event "TEST ENTRY"), delete that email from the inbox and ignore it in exports.
-- Form is activated for origin `https://exitramp505.github.io/rally-rover-events/`. If the site moves to a new domain, submit once from the new site; FormSubmit emails an activation link to the inbox; click it. The alias in `build.py` (FORM_ID) may change.
-- FormSubmit is not a mailing list tool: sending bulk email later needs an email platform (free tiers exist), and every message needs a working unsubscribe.
+## Other open operational items
+- Decide whether to use Luma/Facebook distribution, subject to the respective terms and actual organizer status. No AI organizer outreach.
+- Printful Quick Stores cannot natively provide approved bundles; keep inactive unless a compliant alternative is selected.
+- Netlify Git connection, deploy verification, and FormSubmit new-origin verification are pending.
+- An asynchronous GitHub Issues handoff is being established (see `docs/AGENT_COORDINATION.md`). Acknowledgement by Grok Bot is not yet confirmed.
+
+## Interest form data
+- Signups arrive as emails with a subject identifying the event at the Rally Rover project inbox. The signup means event/merch updates only, **not** official event registration.
+- Do not commit exports or personal information to GitHub.
+- The origin was activated for the GitHub Pages URL. Changing domains can require a fresh FormSubmit activation email to the inbox and a test submission.
+- For suppression/deletion requests, remove the information from collected records. Bulk email, if used later, needs an unsubscribe process.
