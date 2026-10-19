@@ -1,0 +1,299 @@
+{
+ "_note": "PREVIEW data only; used when the Fourthwall API returns no products. Merch shows year only.",
+ "collections": {
+  "georgetown": [
+   {
+    "type": "tee",
+    "title": "Georgetown Christmas Stroll Unisex Tee",
+    "price": 27,
+    "slug": "georgetown-christmas-stroll-2026-tee",
+    "url": "https://rally-rover-shop.fourthwall.com/products/georgetown-christmas-stroll-2026-tee",
+    "image": "img/merch/georgetown-tee.jpg",
+    "sizes": [
+     {
+      "label": "S\u2013XL",
+      "price": 27
+     },
+     {
+      "label": "2XL",
+      "price": 29
+     },
+     {
+      "label": "3XL",
+      "price": 31
+     },
+     {
+      "label": "4XL",
+      "price": 33
+     },
+     {
+      "label": "5XL",
+      "price": 35
+     }
+    ]
+   },
+   {
+    "type": "hoodie",
+    "title": "Georgetown Christmas Stroll Hoodie",
+    "price": 48,
+    "slug": "georgetown-christmas-stroll-2026-hoodie",
+    "url": "https://rally-rover-shop.fourthwall.com/products/georgetown-christmas-stroll-2026-hoodie",
+    "image": "img/merch/georgetown-hoodie.jpg",
+    "sizes": [
+     {
+      "label": "S\u2013XL",
+      "price": 48
+     },
+     {
+      "label": "2XL",
+      "price": 50
+     },
+     {
+      "label": "3XL",
+      "price": 52
+     },
+     {
+      "label": "4XL",
+      "price": 54
+     },
+     {
+      "label": "5XL",
+      "price": 56
+     }
+    ]
+   },
+   {
+    "type": "tote",
+    "title": "Georgetown Christmas Stroll Tote Bag",
+    "price": 27,
+    "slug": "georgetown-christmas-stroll-2026-tote",
+    "url": "https://rally-rover-shop.fourthwall.com/products/georgetown-christmas-stroll-2026-tote",
+    "image": "img/merch/georgetown-tote.jpg",
+    "sizes": []
+   },
+   {
+    "type": "poster",
+    "title": "Georgetown Christmas Stroll Poster, 18x24",
+    "price": 26,
+    "slug": "georgetown-christmas-stroll-2026-poster",
+    "url": "https://rally-rover-shop.fourthwall.com/products/georgetown-christmas-stroll-2026-poster",
+    "image": "img/merch/georgetown-poster.jpg",
+    "sizes": []
+   },
+   {
+    "type": "mug",
+    "title": "Georgetown Christmas Stroll Mug, 11 oz",
+    "price": 18,
+    "slug": "georgetown-christmas-stroll-2026-mug",
+    "url": "https://rally-rover-shop.fourthwall.com/products/georgetown-christmas-stroll-2026-mug",
+    "image": "img/merch/georgetown-mug.jpg",
+    "sizes": []
+   },
+   {
+    "type": "ornament",
+    "title": "Georgetown Christmas Stroll Ornament",
+    "price": 16,
+    "slug": "georgetown-christmas-stroll-2026-ornament",
+    "url": "https://rally-rover-shop.fourthwall.com/products/georgetown-christmas-stroll-2026-ornament",
+    "image": "img/merch/georgetown-ornament.jpg",
+    "sizes": []
+   }
+  ],
+  "flower-mound": [
+   {
+    "type": "tee",
+    "title": "Holidays on the Mound Unisex Tee",
+    "price": 27,
+    "slug": "holidays-on-the-mound-2026-tee",
+    "url": "https://rally-rover-shop.fourthwall.com/products/holidays-on-the-mound-2026-tee",
+    "image": "img/merch/flower-mound-tee.jpg",
+    "sizes": [
+     {
+      "label": "S\u2013XL",
+      "price": 27
+     },
+     {
+      "label": "2XL",
+      "price": 29
+     },
+     {
+      "label": "3XL",
+      "price": 31
+     },
+     {
+      "label": "4XL",
+      "price": 33
+     },
+     {
+      "label": "5XL",
+      "price": 35
+     }
+    ]
+   },
+   {
+    "type": "hoodie",
+    "title": "Holidays on the Mound Hoodie",
+    "price": 48,
+    "slug": "holidays-on-the-mound-2026-hoodie",
+    "url": "https://rally-rover-shop.fourthwall.com/products/holidays-on-the-mound-2026-hoodie",
+    "image": "img/merch/flower-mound-hoodie.jpg",
+    "sizes": [
+     {
+      "label": "S\u2013XL",
+      "price": 48
+     },
+     {
+      "label": "2XL",
+      "price": 50
+     },
+     {
+      "label": "3XL",
+      "price": 52
+     },
+     {
+      "label": "4XL",
+      "price": 54
+     },
+     {
+      "label": "5XL",
+      "price": 56
+     }
+    ]
+   },
+   {
+    "type": "tote",
+    "title": "Holidays on the Mound Tote Bag",
+    "price": 27,
+    "slug": "holidays-on-the-mound-2026-tote",
+    "url": "https://rally-rover-shop.fourthwall.com/products/holidays-on-the-mound-2026-tote",
+    "image": "img/merch/flower-mound-tote.jpg",
+    "sizes": []
+   },
+   {
+    "type": "poster",
+    "title": "Holidays on the Mound Poster, 18x24",
+    "price": 26,
+    "slug": "holidays-on-the-mound-2026-poster",
+    "url": "https://rally-rover-shop.fourthwall.com/products/holidays-on-the-mound-2026-poster",
+    "image": "img/merch/flower-mound-poster.jpg",
+    "sizes": []
+   },
+   {
+    "type": "mug",
+    "title": "Holidays on the Mound Mug, 11 oz",
+    "price": 18,
+    "slug": "holidays-on-the-mound-2026-mug",
+    "url": "https://rally-rover-shop.fourthwall.com/products/holidays-on-the-mound-2026-mug",
+    "image": "img/merch/flower-mound-mug.jpg",
+    "sizes": []
+   },
+   {
+    "type": "ornament",
+    "title": "Holidays on the Mound Ornament",
+    "price": 16,
+    "slug": "holidays-on-the-mound-2026-ornament",
+    "url": "https://rally-rover-shop.fourthwall.com/products/holidays-on-the-mound-2026-ornament",
+    "image": "img/merch/flower-mound-ornament.jpg",
+    "sizes": []
+   }
+  ],
+  "richmond": [
+   {
+    "type": "tee",
+    "title": "Christmas on Broad Street Unisex Tee",
+    "price": 27,
+    "slug": "christmas-on-broad-street-2026-tee",
+    "url": "https://rally-rover-shop.fourthwall.com/products/christmas-on-broad-street-2026-tee",
+    "image": "img/merch/richmond-tee.jpg",
+    "sizes": [
+     {
+      "label": "S\u2013XL",
+      "price": 27
+     },
+     {
+      "label": "2XL",
+      "price": 29
+     },
+     {
+      "label": "3XL",
+      "price": 31
+     },
+     {
+      "label": "4XL",
+      "price": 33
+     },
+     {
+      "label": "5XL",
+      "price": 35
+     }
+    ]
+   },
+   {
+    "type": "hoodie",
+    "title": "Christmas on Broad Street Hoodie",
+    "price": 48,
+    "slug": "christmas-on-broad-street-2026-hoodie",
+    "url": "https://rally-rover-shop.fourthwall.com/products/christmas-on-broad-street-2026-hoodie",
+    "image": "img/merch/richmond-hoodie.jpg",
+    "sizes": [
+     {
+      "label": "S\u2013XL",
+      "price": 48
+     },
+     {
+      "label": "2XL",
+      "price": 50
+     },
+     {
+      "label": "3XL",
+      "price": 52
+     },
+     {
+      "label": "4XL",
+      "price": 54
+     },
+     {
+      "label": "5XL",
+      "price": 56
+     }
+    ]
+   },
+   {
+    "type": "tote",
+    "title": "Christmas on Broad Street Tote Bag",
+    "price": 27,
+    "slug": "christmas-on-broad-street-2026-tote",
+    "url": "https://rally-rover-shop.fourthwall.com/products/christmas-on-broad-street-2026-tote",
+    "image": "img/merch/richmond-tote.jpg",
+    "sizes": []
+   },
+   {
+    "type": "poster",
+    "title": "Christmas on Broad Street Poster, 18x24",
+    "price": 26,
+    "slug": "christmas-on-broad-street-2026-poster",
+    "url": "https://rally-rover-shop.fourthwall.com/products/christmas-on-broad-street-2026-poster",
+    "image": "img/merch/richmond-poster.jpg",
+    "sizes": []
+   },
+   {
+    "type": "mug",
+    "title": "Christmas on Broad Street Mug, 11 oz",
+    "price": 18,
+    "slug": "christmas-on-broad-street-2026-mug",
+    "url": "https://rally-rover-shop.fourthwall.com/products/christmas-on-broad-street-2026-mug",
+    "image": "img/merch/richmond-mug.jpg",
+    "sizes": []
+   },
+   {
+    "type": "ornament",
+    "title": "Christmas on Broad Street Ornament",
+    "price": 16,
+    "slug": "christmas-on-broad-street-2026-ornament",
+    "url": "https://rally-rover-shop.fourthwall.com/products/christmas-on-broad-street-2026-ornament",
+    "image": "img/merch/richmond-ornament.jpg",
+    "sizes": []
+   }
+  ]
+ }
+}

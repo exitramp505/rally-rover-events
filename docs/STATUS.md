@@ -38,3 +38,5 @@
 
 ## Fourthwall status
 Shop created, event collections not yet live via API, payouts pending (Lysander). Details: [FOURTHWALL.md](FOURTHWALL.md).
+
+- 2026-10-18: Merch section live on the 3 event pages in PREVIEW mode (fallback data, Fourthwall product URLs not yet public). Next: publish products, verify handles/slugs, rebuild with token, test checkout.

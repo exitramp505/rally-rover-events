@@ -44,3 +44,12 @@ Merch shows the year only, no date. Customers pay shipping on top.
 ## Status
 - Shop "Rally Rover" exists; collections and products are not yet published.
 - Payouts (Stripe, tax, bank) pending, Lysander's to complete. Agents do not enter these.
+
+## Merch integration (built 2026-10-18)
+- `build.py` adds a **Merch** section (`#merch`) to each event page: cards with image, title, "From $X", size prices (tee/hoodie), and a Buy button linking to the Fourthwall product page (`https://rally-rover-shop.fourthwall.com/products/<slug>`). Each page shows only its own collection.
+- Source order: (1) live Storefront API `/v1/collections/{handle}/products` using token from env `FOURTHWALL_STOREFRONT_TOKEN` (or local `/workspace/fourthwall_api.txt`, git-ignored); (2) **PREVIEW fallback** `data/merch_preview.json` when the API returns nothing (products are still hidden). Token is never written to output.
+- Handles in `HANDLES` (build.py): `georgetown-christmas-stroll`, `flower-mound-christmas-parade`, `richmond-christmas-parade`. **Unverified**: all return 404 while collections are hidden/empty. Re-check `/v1/collections` after publishing and fix `HANDLES` if the slugs differ.
+- Preview badge: set `MERCH_PREVIEW_BADGE=1` at build to show a small "Preview" badge on fallback cards. Off by default.
+- Preview images are in `img/merch/` (mockups from design-trial where they exist; tote and poster use design preview PNGs, not real mockups). Replace with Fourthwall images automatically once the API returns products.
+- Product slugs in the preview JSON are assumed (`georgetown-christmas-stroll-2026-<type>`, `holidays-on-the-mound-2026-<type>`, `christmas-on-broad-street-2026-<type>`); confirm against real Fourthwall slugs.
+- Cart/checkout is via the product page for now. No GitHub Actions workflow added; Pages deploys from the branch. To build with live data in CI later, add repo secret `FOURTHWALL_STOREFRONT_TOKEN` (Lysander).

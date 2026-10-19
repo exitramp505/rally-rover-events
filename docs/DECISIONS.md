@@ -24,3 +24,5 @@
 
 ## 2026-10-18: Fourthwall replaces Printful
 Confirmed by Lysander. Tote $27. Merch integrated into our event pages via Storefront API; one shop with 3 collections. Pages = preview, Netlify = manual release only. See [FOURTHWALL.md](FOURTHWALL.md).
+
+- 2026-10-18: Merch is built into each event page at build time from Fourthwall (Storefront API), with a `data/merch_preview.json` fallback while products are hidden. Buy buttons go to the Fourthwall product page. Year only, no dates.

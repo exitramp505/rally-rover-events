@@ -1,4 +1,4 @@
-import os
+import os,json,urllib.request
 import re,html
 from PIL import Image
 D=os.environ.get('DESIGN_DIR','/workspace/design-trial/')
@@ -23,7 +23,61 @@ main{max-width:860px;margin:0 auto;padding:20px}h1{font-size:2rem;line-height:1.
 .rsvp{background:#fff;border:2px solid var(--a);border-radius:10px;padding:18px 20px;margin:28px 0}.rsvp h2{margin-top:0}.rsvp label{display:block;font:600 .95rem system-ui,sans-serif;margin:10px 0 4px}.rsvp input[type=email],.rsvp input[type=text],.rsvp select{width:100%;padding:10px;font:1rem system-ui,sans-serif;border:1px solid #bbb;border-radius:6px}
 .rsvp .consent{display:flex;gap:8px;align-items:flex-start;font:.95rem system-ui,sans-serif;margin:14px 0}.rsvp .consent input{margin-top:4px}.rsvp button{background:var(--a);color:#fff;border:0;border-radius:6px;padding:12px 22px;font:600 1rem system-ui,sans-serif;cursor:pointer}.rsvp .note{font:.85rem system-ui,sans-serif;color:#555}.hp{position:absolute;left:-9999px;height:0;width:0;overflow:hidden}.msg{font:600 1rem system-ui,sans-serif}.err{color:#b00020}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}.card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 8px #0002;text-decoration:none;color:#222}.card img{width:100%;display:block}.card div{padding:12px 14px}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.mc{position:relative;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 8px #0002;display:flex;flex-direction:column}.mc img{width:100%;display:block;aspect-ratio:1;object-fit:cover}.mc>div{padding:10px 12px 12px;display:flex;flex-direction:column;flex:1}.mc strong{font:600 .95rem/1.3 system-ui,sans-serif}.mc p{margin:4px 0}.pr{font:600 1rem system-ui,sans-serif}.sz{font:.78rem/1.4 system-ui,sans-serif;color:#555}.mc .btn{margin:auto 0 0;text-align:center;padding:10px}.pv{position:absolute;top:8px;left:8px;background:#000a;color:#fff;font:600 .7rem system-ui,sans-serif;padding:2px 8px;border-radius:10px}.note2{font:.85rem system-ui,sans-serif;color:#555}
 footer{max-width:860px;margin:30px auto;padding:20px;border-top:1px solid #ddd;font-size:.85rem;color:#555}"""
+
+# ---- Fourthwall merch (build-time). Token from env FOURTHWALL_STOREFRONT_TOKEN or /workspace/fourthwall_api.txt; never written to output.
+HANDLES={'georgetown':'georgetown-christmas-stroll','flower-mound':'flower-mound-christmas-parade','richmond':'richmond-christmas-parade'}
+SHOP='https://rally-rover-shop.fourthwall.com'
+PREVIEW_BADGE=os.environ.get('MERCH_PREVIEW_BADGE')=='1'  # set to 1 to show a small "Preview" badge on fallback cards
+def _token():
+    t=os.environ.get('FOURTHWALL_STOREFRONT_TOKEN')
+    if t: return t.strip()
+    try:
+        for l in open('/workspace/fourthwall_api.txt'):
+            if l.startswith('STOREFRONT_TOKEN='): return l.split('=',1)[1].strip()
+    except OSError: pass
+    return None
+def _money(v): v=float(v); return f'${v:.0f}' if v==int(v) else f'${v:.2f}'
+def api_products(handle):
+    t=_token()
+    if not t: return []
+    try:
+        u=f'https://storefront-api.fourthwall.com/v1/collections/{handle}/products?storefront_token={t}'
+        j=json.load(urllib.request.urlopen(u,timeout=20))
+    except Exception as ex:
+        print('merch api: no products for',handle,'-',type(ex).__name__); return []
+    out=[]
+    for p in j.get('results',[]):
+        vs=p.get('variants') or []
+        prices=[v['unitPrice']['value'] for v in vs if v.get('unitPrice')]
+        if not prices: continue
+        sizes=[]
+        if len(vs)>1:
+            seen={}
+            for v in vs:
+                seen.setdefault(v.get('name','').split('/')[-1].strip(),v['unitPrice']['value'])
+            sizes=[dict(label=k,price=x) for k,x in seen.items() if k]
+        img=((p.get('images') or [{}])[0]).get('url','')
+        out.append(dict(title=p.get('name',''),price=min(prices),slug=p.get('slug',''),url=f"{SHOP}/products/{p.get('slug','')}",image=img,sizes=sizes))
+    return out
+def merch_products(slug):
+    """Returns (products, is_preview). Live API first, else data/merch_preview.json."""
+    p=api_products(HANDLES[slug])
+    if p: return p,False
+    try: return json.load(open('data/merch_preview.json'))['collections'].get(slug,[]),True
+    except OSError: return [],True
+def merch_section(slug):
+    ps,prev=merch_products(slug)
+    if not ps: return ''
+    c=''
+    for p in ps:
+        sz=''
+        if p.get('sizes'):
+            sz='<p class="sz">'+' · '.join(f"{html.escape(str(s['label']))} {_money(s['price'])}" for s in p['sizes'])+'</p>'
+        badge='<span class="pv">Preview</span>' if (prev and PREVIEW_BADGE) else ''
+        c+=f'<div class="mc">{badge}<a href="{html.escape(p["url"])}" rel="noopener"><img src="{html.escape(p["image"])}" alt="{html.escape(p["title"])}" loading="lazy"></a><div><strong>{html.escape(p["title"])}</strong><p class="pr">From {_money(p["price"])}</p>{sz}<a class="btn" href="{html.escape(p["url"])}" rel="noopener">Buy</a></div></div>'
+    return f'<section id="merch"><h2>Merch</h2><div class="mgrid">{c}</div><p class="note2">Shipping is added at checkout.</p></section>'
 def shell(title,body,a='#b3202a',bg='#10264a',desc=''):
     return f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><style>:root{{--a:{a};--bg:{bg}}}{CSS}</style></head><body><header class="top"><a href="index.html">Rally Rover · Parade Guides</a></header><main>{body}</main>{JS}<footer>{DISC} · <a href="privacy.html">Privacy</a></footer></body></html>'
 
@@ -67,8 +121,8 @@ for e in ev:
 <h2>About the day</h2>{''.join(f'<p>{html.escape(p)}</p>' for p in paras[:-1] if not p.startswith("Take that") and 'Our ' not in p[:4])}
 <p><a class="btn alt" href="{e['off']}" rel="noopener">Official event page: {e['offl']}</a></p>
 <h2>Take it home: {e['collection']}</h2><p>{html.escape([p for p in paras if p.startswith('Take that') or p.startswith('Our ')][0] if [p for p in paras if p.startswith('Take that') or p.startswith('Our ')] else '')}</p>
-<div class="grid"><img src="img/{e['slug']}-hoodie.jpg" alt="Hoodie"><img src="img/{e['slug']}-mug.jpg" alt="Mug"><img src="img/{e['slug']}-tee.jpg" alt="Tee"><img src="img/{e['slug']}-ornament.jpg" alt="Ornament"></div>
-<ul class="p">{merch}</ul><p><a class="btn" href="{e['store']}" rel="noopener">Shop the collection</a></p>
+{merch_section(e['slug'])}
+<p><a class="btn alt" href="{e['store']}" rel="noopener">More at our store</a></p>
 {rsvp(e['name'])}'''
     open(f"{e['slug']}.html",'w').write(shell(e['name']+' 2026 | Rally Rover',body,e['acc'],e['bg'],f"{e['name']}, {e['when']}. Event info and holiday merch."))
     cards+=f'<a class="card" href="{e["slug"]}.html"><img src="img/{e["slug"]}-flyer.jpg" alt=""><div><strong>{e["name"]}</strong><br>{e["short"]} · Dec 5, 2026</div></a>'
