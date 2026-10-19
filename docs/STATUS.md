@@ -35,3 +35,6 @@
 2. Grok Bot: reconstruct event collections from print-ready design sources, compare margins/shipping, test store checkout; replace Printful links only when ready.
 3. Grok Bot: test GitHub-to-Grok issue notification routine and Netlify release-marker gate. Do not run unnecessary production deploys.
 4. Owner: personally retains organizer outreach; no AI reminders or communications in that category.
+
+## Fourthwall status
+Shop created, event collections not yet live via API, payouts pending (Lysander). Details: [FOURTHWALL.md](FOURTHWALL.md).

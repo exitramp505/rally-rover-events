@@ -5,3 +5,6 @@ __pycache__/
 signups*
 .netlify/
 dist/
+fourthwall_api.txt
+fourthwall_login.txt
+*fourthwall_*.txt

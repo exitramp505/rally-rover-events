@@ -53,3 +53,5 @@ Current transitional Printful Quick Stores:
 - Richmond: https://christmas-on-broad-street.printful.me
 
 Approved prices: tees from $27, hoodies from $48, mugs $18, ornaments $16, totes $25, posters $26; $2 per size step from 2XL on tees and hoodies. Bundles have been discussed but are not yet active. Fourthwall account verification, credentials, tax, identity and payout steps remain owner-only. Existing Printful financial obligations and historical orders must be preserved.
+
+- **Merch provider:** see [docs/FOURTHWALL.md](docs/FOURTHWALL.md) (Fourthwall replaces Printful; Printful links remain until Fourthwall checkout is verified).
