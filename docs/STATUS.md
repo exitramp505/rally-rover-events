@@ -16,7 +16,7 @@
 - Decide whether to use Luma/Facebook distribution, subject to the respective terms and actual organizer status. No AI organizer outreach.
 - Existing Printful Quick Stores cannot natively provide approved bundles. Evaluate Fourthwall's bundle capability, costs, and product coverage rather than making new Printful changes.
 - Netlify Git connection and first deploy are complete. The new `[publish-netlify]` ignore rule for demo-only commits is committed but **its behavior has not yet been tested**. Public end-to-end tests and FormSubmit new-origin activation/testing remain pending.
-- GitHub Issues handoff: https://github.com/exitramp505/rally-rover-events/issues/1. New decisions sent to Grok: GitHub Pages demo / Netlify production, Fourthwall account migration, and a request to configure an event-triggered GitHub issue-notification routine. **Grok acknowledgement/working trigger not yet confirmed.**
+- GitHub Issues handoff: https://github.com/exitramp505/rally-rover-events/issues/1. New decisions sent to Grok: GitHub Pages demo / Netlify production, Fourthwall account migration, and a request to configure an event-triggered GitHub issue-notification routine. **Grok previously acknowledged Issue #1** and said automatic issue-comment notification is unavailable in its then-current setup. Latest instructions (Fourthwall, GitHub Pages demo/Netlify controlled production) were posted afterward; Grok acknowledgement of those newer instructions and any working trigger remain pending.
 
 ## Interest form data
 - Signups arrive as emails with a subject identifying the event at the Rally Rover project inbox. The signup means event/merch updates only, **not** official event registration.
