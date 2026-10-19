@@ -3,3 +3,8 @@
 [build]
   command = "mkdir -p dist && cp ./*.html dist/ && cp -R img dist/img"
   publish = "dist"
+
+  # Skip ordinary demo commits so only intentionally approved releases trigger
+  # a production deploy. Netlify: exit 0 = skip; exit 1 = build.
+  # To publish to production, include [publish-netlify] in the commit message.
+  ignore = '''if git log -1 --pretty=%B | grep -Fq "[publish-netlify]"; then exit 1; else exit 0; fi'''
