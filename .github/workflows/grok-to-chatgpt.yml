@@ -67,8 +67,10 @@ jobs:
             --arg conversation_key "rally-rover-issue-1" \
             '{input: $input, conversation_key: $conversation_key}')"
 
+          RESPONSE_FILE="$(mktemp)"
+          trap 'rm -f "$RESPONSE_FILE"' EXIT
           STATUS="$(curl --silent --show-error --max-time 30 \
-            --output /dev/null --write-out '%{http_code}' \
+            --output "$RESPONSE_FILE" --write-out '%{http_code}' \
             --request POST "$AGENT_URL" \
             --header "Authorization: Bearer ${AGENT_ACCESS_TOKEN}" \
             --header "Content-Type: application/json" \
@@ -76,7 +78,11 @@ jobs:
             --data "$BODY")"
 
           if [[ "$STATUS" != "202" ]]; then
-            echo "::error::Workspace Agent trigger rejected (HTTP $STATUS). Check token, agent API channel, publication, and permissions."
+            # Keep the secret and complete API response OUT of public logs.
+            # Print only a short, scrubbed error message useful for diagnosis.
+            ERROR_CODE="$(jq -r '.error.code // "none"' "$RESPONSE_FILE" 2>/dev/null | tr -d '\r\n' | cut -c1-80 || true)"
+            ERROR_MESSAGE="$(jq -r '.error.message // .message // "No API error message"' "$RESPONSE_FILE" 2>/dev/null | tr -d '\r\n' | cut -c1-240 || true)"
+            echo "::error::Workspace Agent trigger rejected (HTTP $STATUS), API code: ${ERROR_CODE:-none}, message: ${ERROR_MESSAGE:-unavailable}"
             exit 1
           fi
           echo "ChatGPT accepted handoff for GitHub comment ${COMMENT_ID} (HTTP 202)."
