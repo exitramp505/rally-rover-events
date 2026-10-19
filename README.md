@@ -4,10 +4,10 @@ Independent community-event guides and original merchandise. The site currently 
 
 **Repository/source of truth:** https://github.com/exitramp505/rally-rover-events
 
-**Production hosting (2026-10-18):**
+**Demo and production hosting (2026-10-18):**
 - **Netlify published successfully:** https://rally-rover-events.netlify.app/ (dashboard: https://app.netlify.com/projects/rally-rover-events). Netlify reports production deploy `6ad55915143f31df8690c44d` in `ready` state, branch `main`, commit `dae8ab000533d1895fdda080ae80dd34c668bdba`.
-- The previous GitHub Pages site remains available: https://exitramp505.github.io/rally-rover-events/
-- GitHub is source of truth. Changes pushed to `main` trigger Netlify continuous deployment. Public browser and RSVP new-origin checks remain to be completed.
+- **GitHub Pages is the development/demo site**: https://exitramp505.github.io/rally-rover-events/ (not a commercial transaction endpoint).
+- **Netlify is production.** To save Netlify deployment credits, the `netlify.toml` ignore command skips ordinary commits and allows intentional releases only when the latest commit message contains `[publish-netlify]`. This new gate still needs a verified skip/release test. GitHub remains source of truth; browser and FormSubmit tests remain open.
 
 ## Scope
 
@@ -37,7 +37,7 @@ git push
 ```
 If the original designer PNGs are not on the machine, the script keeps the existing committed JPGs. Review changes before pushing.
 
-**Netlify status:** Connected to the GitHub repo; first production deploy successfully published on 2026-10-18. The Netlify build copies committed HTML files and `img/` assets to `dist/` without rebuilding images. **Still verify** every public event page, store link, privacy page, and RSVP form in a browser. FormSubmit may require activation for the new origin; check `docs/STATUS.md`.
+**Netlify status:** Connected to the GitHub repo; first production deploy successfully published on 2026-10-18. **Demo commits must not carry `[publish-netlify]`**, while an owner-approved release commit must carry it. The Netlify build copies committed HTML files and `img/` assets to `dist/` without rebuilding images. **Still verify** every public event page, store link, privacy page, and RSVP form in a browser. FormSubmit may require activation for the new origin; check `docs/STATUS.md`.
 
 ## Interest forms and privacy
 
@@ -45,9 +45,11 @@ FormSubmit sends consented interest-only submissions to the project inbox. The f
 
 ## Merchandise
 
-Printful Quick Stores:
+**Migration decision:** The owner selected **Fourthwall** for all event merchandise. Grok Bot is assigned the owner-controlled Fourthwall account setup and migration in [Issue #3](https://github.com/exitramp505/rally-rover-events/issues/3). Do not assume the account, catalog, or website integration is already live. The current Printful Quick Stores remain operational until all equivalent Fourthwall links and checkout are verified.
+
+Current transitional Printful Quick Stores:
 - Georgetown: https://rally-rover.printful.me
 - Flower Mound: https://holidays-on-the-mound.printful.me
 - Richmond: https://christmas-on-broad-street.printful.me
 
-Approved prices: tees from $27, hoodies from $48, mugs $18, ornaments $16, totes $25, posters $26; $2 per size step from 2XL on tees and hoodies. Bundles have been discussed but are not yet active. Printful payout/tax setup remains owner-only.
+Approved prices: tees from $27, hoodies from $48, mugs $18, ornaments $16, totes $25, posters $26; $2 per size step from 2XL on tees and hoodies. Bundles have been discussed but are not yet active. Fourthwall account verification, credentials, tax, identity and payout steps remain owner-only. Existing Printful financial obligations and historical orders must be preserved.
