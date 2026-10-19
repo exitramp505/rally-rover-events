@@ -24,3 +24,9 @@
 - Do not commit exports or personal information to GitHub.
 - The origin was activated for the GitHub Pages URL. Changing domains can require a fresh FormSubmit activation email to the inbox and a test submission.
 - For suppression/deletion requests, remove the information from collected records. Bulk email, if used later, needs an unsubscribe process.
+
+## Update 2026-10-18: hosting gate
+- Lysander paused Netlify auto-publishing on 2026-10-18. GitHub Pages is the preview (updates on every push); Netlify is manual final publish only.
+- Printful remains the merch provider. No Fourthwall decision has been made.
+- Organizer outreach is owner-only (no AI drafting, sending, or tracking).
+- Issue #1 acknowledged by the Grok Bot side. Grok Bot-side agents cannot be auto-notified of issue comments; the owner should tell it to check.
