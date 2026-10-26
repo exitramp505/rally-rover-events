@@ -4,6 +4,8 @@ Status: final for Event Merch Ops QC. Vibe: warm hometown square gathering (cozy
 ## Promo post (social / event page)
 Pull up a chair on the square, Georgetown. The 45th Georgetown Christmas Stroll Parade steps off Saturday, December 5, 2026 at 10:00 AM in Historic Downtown, part of the free, family-friendly three-day Hometown Christmas Stroll: A Season to Gather. Picture the 1911 Williamson County Courthouse glowing over the square, garland and twinkling lights, holiday music, and neighbors who feel like family. Organizers expect 75,000+ visitors over the weekend, so come early and bring a warm drink.
 
+Free event parking: lots at Seventh &amp; Rock Streets, Austin Avenue &amp; Fifth Street, and MLK Jr. Street at Seventh &amp; Eighth Streets, plus the parking garages at Sixth &amp; Main and Fourth &amp; Rock (per the City of Georgetown visitor guide).
+
 Take that hometown glow home. Our Lone Star and courthouse designs wrap the star in a holly wreath, in navy, Lone Star red, and white with a touch of garland green:
 
 Lead with the cozy stuff:
