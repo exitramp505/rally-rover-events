@@ -26,3 +26,6 @@
 Confirmed by Lysander. Tote $27. Merch integrated into our event pages via Storefront API; one shop with 3 collections. Pages = preview, Netlify = manual release only. See [FOURTHWALL.md](FOURTHWALL.md).
 
 - 2026-10-18: Merch is built into each event page at build time from Fourthwall (Storefront API), with a `data/merch_preview.json` fallback while products are hidden. Buy buttons go to the Fourthwall product page. Year only, no dates.
+
+## 2026-11-02: Analytics = GoatCounter
+Requested by Lysander. GoatCounter chosen: free for small businesses, no cookies (no banner), works on Pages and Netlify, read API for agent reporting. Script injected by `build.py` from `data/analytics.json`. See [ANALYTICS.md](ANALYTICS.md).

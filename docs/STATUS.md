@@ -40,3 +40,7 @@
 Shop created, event collections not yet live via API, payouts pending (Lysander). Details: [FOURTHWALL.md](FOURTHWALL.md).
 
 - 2026-10-18: Merch section live on the 3 event pages in PREVIEW mode (fallback data, Fourthwall product URLs not yet public). Next: publish products, verify handles/slugs, rebuild with token, test checkout.
+
+## Analytics (2026-11-02)
+- GoatCounter (free, cookieless) added to all 5 pages via `build.py` + `data/analytics.json`. Tracks page views, referrers, Buy/store clicks and successful RSVP submits. Account `rallyrover`, read-only API token held privately by Grok Bot. Details: [ANALYTICS.md](ANALYTICS.md).
+- Data starts 2026-11-02; there is no record of visits before this (GitHub Pages has no built-in visitor stats). Netlify will report into the same GoatCounter site once production is published.

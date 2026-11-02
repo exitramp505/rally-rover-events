@@ -76,10 +76,17 @@ def merch_section(slug):
         if p.get('sizes'):
             sz='<p class="sz">'+' · '.join(f"{html.escape(str(s['label']))} {_money(s['price'])}" for s in p['sizes'])+'</p>'
         badge='<span class="pv">Preview</span>' if (prev and PREVIEW_BADGE) else ''
-        c+=f'<div class="mc">{badge}<a href="{html.escape(p["url"])}" rel="noopener"><img src="{html.escape(p["image"])}" alt="{html.escape(p["title"])}" loading="lazy"></a><div><strong>{html.escape(p["title"])}</strong><p class="pr">From {_money(p["price"])}</p>{sz}<a class="btn" href="{html.escape(p["url"])}" rel="noopener">Buy</a></div></div>'
+        c+=f'<div class="mc">{badge}<a href="{html.escape(p["url"])}" rel="noopener"><img src="{html.escape(p["image"])}" alt="{html.escape(p["title"])}" loading="lazy"></a><div><strong>{html.escape(p["title"])}</strong><p class="pr">From {_money(p["price"])}</p>{sz}<a class="btn" href="{html.escape(p["url"])}" rel="noopener" data-goatcounter-click="buy-{slug}-{_gc_slug(p["title"])}" data-goatcounter-title="Buy: {html.escape(p["title"])}">Buy</a></div></div>'
     return f'<section id="merch"><h2>Merch</h2><div class="mgrid">{c}</div><p class="note2">Shipping is added at checkout.</p></section>'
+# ---- Analytics (GoatCounter, cookieless). Public config in data/analytics.json; see docs/ANALYTICS.md.
+try: AN=json.load(open('data/analytics.json'))
+except OSError: AN={}
+def analytics_tag():
+    if not AN.get('enabled') or not AN.get('endpoint'): return ''
+    return f'<script data-goatcounter="{html.escape(AN["endpoint"])}" async src="{html.escape(AN.get("script","https://gc.zgo.at/count.js"))}"></script>'
+def _gc_slug(t): return re.sub(r'[^a-z0-9]+','-',t.lower()).strip('-')
 def shell(title,body,a='#b3202a',bg='#10264a',desc=''):
-    return f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><style>:root{{--a:{a};--bg:{bg}}}{CSS}</style></head><body><header class="top"><a href="index.html">Rally Rover · Parade Guides</a></header><main>{body}</main>{JS}<footer>{DISC} · <a href="privacy.html">Privacy</a></footer></body></html>'
+    return f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}"><style>:root{{--a:{a};--bg:{bg}}}{CSS}</style>{analytics_tag()}</head><body><header class="top"><a href="index.html">Rally Rover · Parade Guides</a></header><main>{body}</main>{JS}<footer>{DISC} · <a href="privacy.html">Privacy</a></footer></body></html>'
 
 def rsvp(evname):
     en=html.escape(evname)
@@ -98,7 +105,7 @@ if(f.querySelector('[name=_honey]').value){f.parentNode.querySelector('.thanks')
 if(!f.email.value||!f.email.checkValidity()){m.className='msg err';m.textContent='Please enter a valid email.';return}
 if(!f.consent.checked){m.className='msg err';m.textContent='Please tick the consent box to sign up.';return}
 var d=new FormData(f);d.set('consent_text',"CONSENT_TEXT");var b=f.querySelector('button');b.disabled=true;m.textContent='Sending...';
-fetch(f.action,{method:'POST',body:d,headers:{'Accept':'application/json'}}).then(function(r){return r.json()}).then(function(j){if(j.success===true||j.success==='true'){f.hidden=true;f.parentNode.querySelector('.thanks').hidden=false}else{throw 0}}).catch(function(){b.disabled=false;m.className='msg err';m.textContent='Sorry, that did not go through. Please try again later.'})})})</script>""".replace('CONSENT_TEXT',CONSENT)
+fetch(f.action,{method:'POST',body:d,headers:{'Accept':'application/json'}}).then(function(r){return r.json()}).then(function(j){if(j.success===true||j.success==='true'){f.hidden=true;f.parentNode.querySelector('.thanks').hidden=false;try{window.goatcounter&&window.goatcounter.count&&window.goatcounter.count({path:'rsvp-submit-'+location.pathname.replace(/^.*\\//,'').replace(/\\.html$/,''),title:'RSVP submitted',event:true})}catch(_){}}else{throw 0}}).catch(function(){b.disabled=false;m.className='msg err';m.textContent='Sorry, that did not go through. Please try again later.'})})})</script>""".replace('CONSENT_TEXT',CONSENT)
 cards=''
 for e in ev:
     t=open('docs/copy/'+e['fn']).read()
@@ -122,7 +129,7 @@ for e in ev:
 <p><a class="btn alt" href="{e['off']}" rel="noopener">Official event page: {e['offl']}</a></p>
 <h2>Take it home: {e['collection']}</h2><p>{html.escape([p for p in paras if p.startswith('Take that') or p.startswith('Our ')][0] if [p for p in paras if p.startswith('Take that') or p.startswith('Our ')] else '')}</p>
 {merch_section(e['slug'])}
-<p><a class="btn alt" href="{e['store']}" rel="noopener">More at our store</a></p>
+<p><a class="btn alt" href="{e['store']}" rel="noopener" data-goatcounter-click="store-{e['slug']}" data-goatcounter-title="More at our store: {e['short']}">More at our store</a></p>
 {rsvp(e['name'])}'''
     open(f"{e['slug']}.html",'w').write(shell(e['name']+' 2026 | Rally Rover',body,e['acc'],e['bg'],f"{e['name']}, {e['when']}. Event info and holiday merch."))
     cards+=f'<a class="card" href="{e["slug"]}.html"><img src="img/{e["slug"]}-flyer.jpg" alt=""><div><strong>{e["name"]}</strong><br>{e["short"]} · Dec 5, 2026</div></a>'
@@ -131,7 +138,7 @@ priv=f'''<h1>Privacy</h1><p>Last updated October 18, 2026.</p>
 <h2>Who we are</h2><p>Rally Rover publishes holiday parade guides and merchandise.</p>
 <h2>What the RSVP form collects</h2><p>Your email address, an optional first name, which event you are interested in, and your consent. </p>
 <h2>How we use it</h2><p>Only to email you updates about the event you chose and about our merchandise, as you agreed when you ticked the consent box ("{CONSENT}"). We do not sell or share your email.</p>
-<h2>Where it is processed</h2><p>Form submissions are relayed by the form service FormSubmit (formsubmit.co) to our project inbox. This site has no analytics or tracking cookies. Links to the Printful stores and official event sites are governed by those sites' own policies.</p>
+<h2>Where it is processed</h2><p>Form submissions are relayed by the form service FormSubmit (formsubmit.co) to our project inbox. This site has no tracking cookies. We count anonymous page visits with GoatCounter (no cookies, no personal data stored). Links to the Printful stores and official event sites are governed by those sites' own policies.</p>
 <h2>Unsubscribe or delete</h2><p>Every email will tell you how to unsubscribe. You can also email rallyrover@mail.grokbot.com at any time to ask us to remove or delete your information, and we will do so.</p>
 <h2>Children</h2><p>This form is intended for adults; please do not submit information for a child.</p>'''
 open('privacy.html','w').write(shell('Privacy | Rally Rover',priv,desc='Privacy note for Rally Rover RSVP updates.'))

@@ -1,0 +1,8 @@
+{
+  "provider": "goatcounter",
+  "enabled": true,
+  "endpoint": "https://rallyrover.goatcounter.com/count",
+  "script": "https://gc.zgo.at/count.js",
+  "dashboard": "https://rallyrover.goatcounter.com",
+  "notes": "Public, non-secret values only. No cookies. See docs/ANALYTICS.md."
+}
