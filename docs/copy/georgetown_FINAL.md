@@ -4,7 +4,9 @@ Status: final for Event Merch Ops QC. Vibe: warm hometown square gathering (cozy
 ## Promo post (social / event page)
 Pull up a chair on the square, Georgetown. The 45th Georgetown Christmas Stroll Parade steps off Saturday, December 5, 2026 at 10:00 AM in Historic Downtown, part of the free, family-friendly three-day Hometown Christmas Stroll: A Season to Gather. Picture the 1911 Williamson County Courthouse glowing over the square, garland and twinkling lights, holiday music, and neighbors who feel like family. Organizers expect 75,000+ visitors over the weekend, so come early and bring a warm drink.
 
-Free event parking: lots at Seventh &amp; Rock Streets, Austin Avenue &amp; Fifth Street, and MLK Jr. Street at Seventh &amp; Eighth Streets, plus the parking garages at Sixth &amp; Main and Fourth &amp; Rock (per the City of Georgetown visitor guide).
+Free event parking (per the Downtown Georgetown Association): the public garage at 502 S. Main Street, the Williamson County garage at Third and Rock Streets, and lots at Seventh and Rock Streets, Eighth and Martin Luther King Jr. Streets, and the west side of Austin Avenue at Fifth Street. The 502 S. Main garage closes for the parade on Saturday from 6:00 AM to noon (cars already inside stay until it reopens), and the Sixth and Main lot is closed December 3 to 7. Handicapped parking is at the city lot at 10th and Main Streets, plus the east side of the library lot at Eighth and MLK Jr. Streets on Friday and Saturday.
+
+Road closures: on parade morning (Saturday, 6:00 AM to noon) Austin Avenue is closed from Second to 11th Streets, with the detour on Rock Street. All weekend, from 5:00 AM Friday until midnight Sunday night, Austin Avenue and Main Street are closed between Sixth and Tenth Streets, along with Sixth Street from Austin Avenue to Church Street and Seventh and Eighth Streets from Rock Street to Church Street. The parade is rain or shine.
 
 Take that hometown glow home. Our Lone Star and courthouse designs wrap the star in a holly wreath, in navy, Lone Star red, and white with a touch of garland green:
 
